@@ -2,9 +2,16 @@
 
 ```python
 from bookshelf.models import Book
-Book.objects.filter(title="1984").update(title="Nineteen Eighty-Four")
-book = Book.objects.get(title="Nineteen Eighty-Four")
-book
-# Output: <Book: Nineteen Eighty-Four>
+
+# Retrieve the book first
+book = Book.objects.get(title="1984")
+
+# Update the title
+book.title = "Nineteen Eighty-Four"
+book.save()
+
+# Confirm the update
+book.title
+# Output: 'Nineteen Eighty-Four'
 
 
