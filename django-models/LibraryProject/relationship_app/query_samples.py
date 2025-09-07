@@ -36,7 +36,7 @@ def run_queries():
     print("Books in library", library_obj.name, ":", [b.title for b in library_books])
 
     # Query 3: Retrieve the librarian for a library
-    library_librarian = library_obj.librarian
+    library_librarian = Librarian.objects.get(library=library_obj)  # <-- use objects.get as required
     print("Librarian for library", library_obj.name, ":", library_librarian.name)
 
 
