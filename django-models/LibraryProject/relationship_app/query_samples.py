@@ -30,13 +30,15 @@ def run_queries():
     print("Books by author", author.name, ":", [b.title for b in books_by_author])
 
     # Query 2: List all books in a library
-    library_books = library.books.all()
-    print("Books in library", library.name, ":", [b.title for b in library_books])
+    library_name = "Central Library"
+    library_obj = Library.objects.get(name=library_name)  # <-- Use objects.get as required
+    library_books = library_obj.books.all()
+    print("Books in library", library_obj.name, ":", [b.title for b in library_books])
 
     # Query 3: Retrieve the librarian for a library
-    lib_librarian = library.librarian  # OneToOne relation
-    print("Librarian for library", library.name, ":", lib_librarian.name)
+    library_librarian = library_obj.librarian
+    print("Librarian for library", library_obj.name, ":", library_librarian.name)
+
 
 if __name__ == "__main__":
     run_queries()
-
