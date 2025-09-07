@@ -23,15 +23,15 @@ def prepare_sample_data():
     return author, [book1, book2], library, librarian
 
 def run_queries():
-    author, books, library, librarian = prepare_sample_data()
-
     # Query 1: Query all books by a specific author
+    author_name = "George Orwell"
+    author = Author.objects.get(name=author_name)
     books_by_author = Book.objects.filter(author=author)
     print("Books by author", author.name, ":", [b.title for b in books_by_author])
 
     # Query 2: List all books in a library
     library_name = "Central Library"
-    library_obj = Library.objects.get(name=library_name)  # <-- Use objects.get as required
+    library_obj = Library.objects.get(name=library_name)
     library_books = library_obj.books.all()
     print("Books in library", library_obj.name, ":", [b.title for b in library_books])
 
